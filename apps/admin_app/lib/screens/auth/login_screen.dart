@@ -44,47 +44,41 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.navy,
+      backgroundColor: AppColors.primaryDeep,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(28),
             child: Column(children: [
-              // Logo mark
               Container(
-                width: 72, height: 72,
+                width: 70, height: 70,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.4), width: 1),
-                  color: Colors.white.withValues(alpha: 0.04),
+                  color: AppColors.primary.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Center(child: Text('🐟', style: TextStyle(fontSize: 32))),
+                child: const Center(child: Text('🐟', style: TextStyle(fontSize: 34))),
               ),
-              const SizedBox(height: 16),
-              const Text(
-                'Third Step',
-                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700, letterSpacing: 0.5),
-              ),
+              const SizedBox(height: 14),
+              const Text('Third Step', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700)),
               Text(
-                'Admin Portal',
-                style: TextStyle(color: AppColors.gold.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+                'ADMIN PORTAL',
+                style: TextStyle(color: AppColors.primarySoft.withValues(alpha: 0.7), fontSize: 11, letterSpacing: 1.5),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 36),
 
-              // Form card
               Container(
-                padding: const EdgeInsets.all(28),
+                padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(24),
                 ),
                 child: Form(
                   key: _formKey,
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    const Text('Sign In', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: AppColors.textPrimary, letterSpacing: -0.3)),
+                    const Text('Sign In', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
                     const SizedBox(height: 4),
                     const Text('Enter your credentials to continue', style: TextStyle(fontSize: 13, color: AppColors.textSecondary)),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 22),
 
                     if (_error != null) ...[
                       Container(
@@ -92,15 +86,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         margin: const EdgeInsets.only(bottom: 16),
                         decoration: BoxDecoration(
                           color: AppColors.errorBg,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: AppColors.error.withValues(alpha: 0.2)),
                         ),
                         child: Text(_error!, style: const TextStyle(color: AppColors.error, fontSize: 13)),
                       ),
                     ],
 
-                    _FieldLabel('Email'),
-                    const SizedBox(height: 6),
                     TextFormField(
                       controller: _emailCtrl,
                       keyboardType: TextInputType.emailAddress,
@@ -111,10 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       validator: (v) => v!.isEmpty ? 'Required' : null,
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 12),
 
-                    _FieldLabel('Password'),
-                    const SizedBox(height: 6),
                     TextFormField(
                       controller: _passCtrl,
                       obscureText: _obscure,
@@ -133,20 +123,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       validator: (v) => v!.isEmpty ? 'Required' : null,
                       onFieldSubmitted: (_) => _login(),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 20),
 
                     GestureDetector(
                       onTap: _loading ? null : _login,
                       child: Container(
                         width: double.infinity, height: 50,
                         decoration: BoxDecoration(
-                          color: AppColors.navy,
-                          borderRadius: BorderRadius.circular(12),
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(100),
                         ),
                         child: Center(
                           child: _loading
-                              ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 1.5))
-                              : const Text('Sign In', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: 0.2)),
+                              ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                              : const Text('Sign In', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
                         ),
                       ),
                     ),
@@ -154,10 +144,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 24),
               Text(
                 'Third Step Fish Trading © 2026',
-                style: TextStyle(color: Colors.white.withValues(alpha: 0.25), fontSize: 11, letterSpacing: 0.3),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.3), fontSize: 11),
               ),
             ]),
           ),
@@ -165,14 +155,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-class _FieldLabel extends StatelessWidget {
-  final String text;
-  const _FieldLabel(this.text);
-  @override
-  Widget build(BuildContext context) => Text(
-    text,
-    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textSecondary, letterSpacing: 0.4),
-  );
 }

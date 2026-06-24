@@ -26,10 +26,10 @@ class AdminShell extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
             child: Row(children: [
-              _AdminNavItem(icon: Icons.grid_view_outlined, activeIcon: Icons.grid_view, label: 'Dashboard', index: 0, current: currentIndex, onTap: () => context.go('/dashboard')),
-              _AdminNavItem(icon: Icons.receipt_outlined, activeIcon: Icons.receipt, label: 'Orders', index: 1, current: currentIndex, onTap: () => context.go('/orders')),
+              _AdminNavItem(icon: Icons.grid_view_outlined, activeIcon: Icons.grid_view_rounded, label: 'Dashboard', index: 0, current: currentIndex, onTap: () => context.go('/dashboard')),
+              _AdminNavItem(icon: Icons.receipt_long_outlined, activeIcon: Icons.receipt_long, label: 'Orders', index: 1, current: currentIndex, onTap: () => context.go('/orders')),
               _AdminNavItem(icon: Icons.inventory_2_outlined, activeIcon: Icons.inventory_2, label: 'Products', index: 2, current: currentIndex, onTap: () => context.go('/products')),
               _AdminNavItem(icon: Icons.waves_outlined, activeIcon: Icons.waves, label: 'Catch', index: 3, current: currentIndex, onTap: () => context.go('/catch')),
               _AdminNavItem(icon: Icons.label_outline, activeIcon: Icons.label, label: 'Categories', index: 4, current: currentIndex, onTap: () => context.go('/categories')),
@@ -57,29 +57,29 @@ class _AdminNavItem extends StatelessWidget {
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Icon(
-            selected ? activeIcon : icon,
-            color: selected ? AppColors.gold : AppColors.textTertiary,
-            size: 22,
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            width: 36, height: 26,
+            decoration: BoxDecoration(
+              color: selected ? AppColors.primaryLight : Colors.transparent,
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: Icon(
+              selected ? activeIcon : icon,
+              color: selected ? AppColors.primary : AppColors.textTertiary,
+              size: 20,
+            ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           Text(
             label,
             style: TextStyle(
-              fontSize: 9,
+              fontSize: 8.5,
               fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
-              color: selected ? AppColors.gold : AppColors.textTertiary,
-              letterSpacing: 0.1,
+              color: selected ? AppColors.primary : AppColors.textTertiary,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 2),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            width: selected ? 14 : 0,
-            height: 2,
-            decoration: BoxDecoration(color: AppColors.gold, borderRadius: BorderRadius.circular(1)),
           ),
         ]),
       ),

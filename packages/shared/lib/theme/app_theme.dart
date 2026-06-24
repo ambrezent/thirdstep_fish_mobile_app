@@ -1,80 +1,97 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Core palette
-  static const navy = Color(0xFF0A1628);
-  static const navyMid = Color(0xFF152840);
-  static const navyLight = Color(0xFF1E3A57);
-  static const gold = Color(0xFFC9A84C);
-  static const goldLight = Color(0xFFDFC278);
-  static const goldDim = Color(0xFF8B6F2E);
+  // Primary teal palette
+  static const primary = Color(0xFF0D9488);
+  static const primaryDark = Color(0xFF0F766E);
+  static const primaryDeep = Color(0xFF134E4A);
+  static const primaryLight = Color(0xFFE8F9F5);
+  static const primarySoft = Color(0xFFCCFBF1);
+
+  // Accent
+  static const accent = Color(0xFFF97316);
+  static const accentLight = Color(0xFFFFF3E0);
+  static const whatsappGreen = Color(0xFF25D366);
 
   // Surfaces
-  static const background = Color(0xFFFAF9F7);
+  static const background = Color(0xFFF8FAFC);
   static const surface = Color(0xFFFFFFFF);
-  static const surfaceSecondary = Color(0xFFF4F3F0);
-  static const border = Color(0xFFE8E6E1);
-  static const borderLight = Color(0xFFF0EEE9);
+  static const surfaceSecondary = Color(0xFFF1F5F9);
+  static const border = Color(0xFFE2E8F0);
+  static const borderLight = Color(0xFFF1F5F9);
 
   // Text
-  static const textPrimary = Color(0xFF0A1628);
-  static const textSecondary = Color(0xFF6B7280);
-  static const textTertiary = Color(0xFFADB5BD);
+  static const textPrimary = Color(0xFF0F172A);
+  static const textSecondary = Color(0xFF64748B);
+  static const textTertiary = Color(0xFF94A3B8);
 
   // Status
-  static const success = Color(0xFF0D7377);
-  static const successBg = Color(0xFFE6F4F4);
-  static const warning = Color(0xFF92400E);
-  static const warningBg = Color(0xFFFEF3C7);
-  static const error = Color(0xFF991B1B);
+  static const success = Color(0xFF16A34A);
+  static const successBg = Color(0xFFD1FAE5);
+  static const successText = Color(0xFF065F46);
+  static const warning = Color(0xFFF97316);
+  static const warningBg = Color(0xFFFEF9C3);
+  static const warningText = Color(0xFFA16207);
+  static const error = Color(0xFFDC2626);
   static const errorBg = Color(0xFFFEF2F2);
+  static const errorText = Color(0xFF991B1B);
+  static const info = Color(0xFF2563EB);
+  static const infoBg = Color(0xFFDBEAFE);
 
-  // Utility
-  static const whatsappGreen = Color(0xFF25D366);
+  // Legacy aliases — keeps older screens compiling
+  static const navy = primaryDeep;
+  static const navyMid = primary;
+  static const navyLight = primaryDark;
+  static const gold = accent;
+  static const goldLight = Color(0xFFFDBA74);
+  static const goldDim = Color(0xFFC2410C);
+  static const surfaceSecondaryOld = surfaceSecondary;
+  static const warningBgOld = warningBg;
+  static const errorBgOld = errorBg;
 }
 
 ThemeData buildAppTheme({bool isAdmin = false}) {
-  final primary = isAdmin ? AppColors.gold : AppColors.navy;
+  const primary = AppColors.primary;
 
   return ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
       seedColor: primary,
       primary: primary,
-      secondary: isAdmin ? AppColors.navy : AppColors.gold,
+      secondary: AppColors.accent,
       surface: AppColors.surface,
       onSurface: AppColors.textPrimary,
     ),
     fontFamily: 'Inter',
     scaffoldBackgroundColor: AppColors.background,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: primary,
       foregroundColor: Colors.white,
       elevation: 0,
       centerTitle: false,
-      titleTextStyle: const TextStyle(
+      titleTextStyle: TextStyle(
         color: Colors.white,
         fontSize: 17,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
         fontFamily: 'Inter',
-        letterSpacing: 0.2,
+        letterSpacing: 0.1,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: primary,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
         elevation: 0,
-        textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15, letterSpacing: 0.2),
+        textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primary,
-        side: BorderSide(color: primary, width: 1.5),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        side: const BorderSide(color: primary, width: 1.5),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       ),
     ),
@@ -82,18 +99,18 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
       filled: true,
       fillColor: AppColors.surfaceSecondary,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(100),
         borderSide: const BorderSide(color: AppColors.border),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(100),
         borderSide: const BorderSide(color: AppColors.border),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: primary, width: 1.5),
+        borderRadius: BorderRadius.circular(100),
+        borderSide: const BorderSide(color: primary, width: 1.5),
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       labelStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
       hintStyle: const TextStyle(color: AppColors.textTertiary, fontSize: 14),
     ),
@@ -102,11 +119,19 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(color: AppColors.border),
+        side: const BorderSide(color: AppColors.borderLight),
       ),
     ),
     dividerTheme: const DividerThemeData(color: AppColors.borderLight, thickness: 1, space: 0),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    chipTheme: ChipThemeData(
+      backgroundColor: AppColors.surfaceSecondary,
+      selectedColor: primary,
+      labelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      side: const BorderSide(color: AppColors.border),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.surface,
       selectedItemColor: primary,
       unselectedItemColor: AppColors.textTertiary,
