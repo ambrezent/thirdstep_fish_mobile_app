@@ -1,0 +1,9 @@
+name: thirdstep_fish
+
+packages:
+  - apps/**
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
