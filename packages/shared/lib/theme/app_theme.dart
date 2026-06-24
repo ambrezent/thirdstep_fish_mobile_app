@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   // Brand — navy + gold (unchanged)
@@ -58,18 +59,17 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
       surface: AppColors.surface,
       onSurface: AppColors.textPrimary,
     ),
-    fontFamily: 'Inter',
+    textTheme: GoogleFonts.poppinsTextTheme(),
     scaffoldBackgroundColor: AppColors.background,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       backgroundColor: primary,
       foregroundColor: Colors.white,
       elevation: 0,
       centerTitle: false,
-      titleTextStyle: TextStyle(
+      titleTextStyle: GoogleFonts.poppins(
         color: Colors.white,
         fontSize: 17,
         fontWeight: FontWeight.w700,
-        fontFamily: 'Inter',
         letterSpacing: 0.1,
       ),
     ),
@@ -80,7 +80,7 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
         elevation: 0,
-        textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+        textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: 15),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -89,6 +89,7 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
         side: const BorderSide(color: primary, width: 1.5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 15),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -107,8 +108,8 @@ ThemeData buildAppTheme({bool isAdmin = false}) {
         borderSide: const BorderSide(color: primary, width: 1.5),
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      labelStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
-      hintStyle: const TextStyle(color: AppColors.textTertiary, fontSize: 14),
+      labelStyle: GoogleFonts.poppins(color: AppColors.textSecondary, fontSize: 14),
+      hintStyle: GoogleFonts.poppins(color: AppColors.textTertiary, fontSize: 14),
     ),
     cardTheme: CardThemeData(
       color: AppColors.surface,
