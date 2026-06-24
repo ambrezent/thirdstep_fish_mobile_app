@@ -18,7 +18,7 @@ class DashboardScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: RefreshIndicator(
-        color: AppColors.primary,
+        color: AppColors.navy,
         strokeWidth: 1.5,
         onRefresh: () async => ref.invalidate(ordersStreamProvider),
         child: CustomScrollView(
@@ -26,11 +26,11 @@ class DashboardScreen extends ConsumerWidget {
             SliverAppBar(
               expandedHeight: 170,
               pinned: true,
-              backgroundColor: AppColors.primary,
+              backgroundColor: AppColors.navy,
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                  color: AppColors.primary,
+                  color: AppColors.navy,
                   padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
                   child: SafeArea(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -41,15 +41,15 @@ class DashboardScreen extends ConsumerWidget {
                             width: 34, height: 34,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9),
-                              color: AppColors.primary.withValues(alpha: 0.15),
-                              border: Border.all(color: AppColors.primary.withValues(alpha: 0.25)),
+                              color: AppColors.navy.withValues(alpha: 0.15),
+                              border: Border.all(color: AppColors.navy.withValues(alpha: 0.25)),
                             ),
                             child: const Center(child: Text('🐟', style: TextStyle(fontSize: 17))),
                           ),
                           const SizedBox(width: 10),
                           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                             const Text('Third Step', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700, letterSpacing: 0.3)),
-                            Text('Admin Portal', style: TextStyle(color: AppColors.primary.withValues(alpha: 0.7), fontSize: 9, letterSpacing: 0.8)),
+                            Text('Admin Portal', style: TextStyle(color: AppColors.navy.withValues(alpha: 0.7), fontSize: 9, letterSpacing: 0.8)),
                           ]),
                         ]),
                         GestureDetector(
@@ -70,7 +70,7 @@ class DashboardScreen extends ConsumerWidget {
                       ),
                       Text(
                         DateFormat('EEEE, d MMMM').format(DateTime.now()),
-                        style: TextStyle(color: AppColors.primary.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.2),
+                        style: TextStyle(color: AppColors.navy.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.2),
                       ),
                     ]),
                   ),
@@ -107,7 +107,7 @@ class DashboardScreen extends ConsumerWidget {
                         label: 'Total Orders',
                         icon: Icons.receipt_outlined,
                         value: ordersAsync.when(data: (o) => '${o.length}', loading: () => '—', error: (_, __) => '—'),
-                        accent: AppColors.primary,
+                        accent: AppColors.gold,
                         onTap: () => context.go('/orders'),
                       ),
                       _StatCard(
@@ -152,7 +152,7 @@ class DashboardScreen extends ConsumerWidget {
                   const SizedBox(height: 10),
 
                   ordersAsync.when(
-                    loading: () => const Center(child: Padding(padding: EdgeInsets.all(20), child: CircularProgressIndicator(color: AppColors.primary, strokeWidth: 1.5))),
+                    loading: () => const Center(child: Padding(padding: EdgeInsets.all(20), child: CircularProgressIndicator(color: AppColors.navy, strokeWidth: 1.5))),
                     error: (e, _) => Text('Error: $e', style: const TextStyle(color: AppColors.error)),
                     data: (orders) => Column(
                       children: orders.take(5).map((o) => _RecentOrderTile(o)).toList(),
@@ -189,7 +189,7 @@ class _SectionTitle extends StatelessWidget {
       if (action != null)
         GestureDetector(
           onTap: onAction,
-          child: Text(action!, style: const TextStyle(fontSize: 12, color: AppColors.primary, fontWeight: FontWeight.w600)),
+          child: Text(action!, style: const TextStyle(fontSize: 12, color: AppColors.navy, fontWeight: FontWeight.w600)),
         ),
     ],
   );
@@ -205,7 +205,7 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = accent ?? AppColors.primary;
+    final color = accent ?? AppColors.navy;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -248,7 +248,7 @@ class _ActionBtn extends StatelessWidget {
     child: Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
-        color: gold ? AppColors.primary : AppColors.primary,
+        color: gold ? AppColors.navy : AppColors.navy,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(children: [

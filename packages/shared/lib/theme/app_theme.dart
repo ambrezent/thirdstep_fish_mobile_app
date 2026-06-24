@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary teal palette
-  static const primary = Color(0xFF0D9488);
-  static const primaryDark = Color(0xFF0F766E);
-  static const primaryDeep = Color(0xFF134E4A);
-  static const primaryLight = Color(0xFFE8F9F5);
-  static const primarySoft = Color(0xFFCCFBF1);
+  // Brand — navy + gold (unchanged)
+  static const navy = Color(0xFF0A1628);
+  static const navyMid = Color(0xFF152840);
+  static const navyLight = Color(0xFF1E3A57);
+  static const gold = Color(0xFFC9A84C);
+  static const goldLight = Color(0xFFDFC278);
+  static const goldDim = Color(0xFF8B6F2E);
 
-  // Accent
-  static const accent = Color(0xFFF97316);
-  static const accentLight = Color(0xFFFFF3E0);
-  static const whatsappGreen = Color(0xFF25D366);
+  // Convenience alias used by new screens
+  static const primary = navy;
+  static const primaryLight = Color(0xFFE8EDF4);
+  static const primaryDeep = navy;
+  static const primarySoft = Color(0xFFD0DBE8);
+  static const accent = gold;
+  static const accentLight = Color(0xFFFAF3DF);
 
   // Surfaces
   static const background = Color(0xFFF8FAFC);
@@ -21,7 +25,7 @@ class AppColors {
   static const borderLight = Color(0xFFF1F5F9);
 
   // Text
-  static const textPrimary = Color(0xFF0F172A);
+  static const textPrimary = Color(0xFF0A1628);
   static const textSecondary = Color(0xFF64748B);
   static const textTertiary = Color(0xFF94A3B8);
 
@@ -38,27 +42,19 @@ class AppColors {
   static const info = Color(0xFF2563EB);
   static const infoBg = Color(0xFFDBEAFE);
 
-  // Legacy aliases — keeps older screens compiling
-  static const navy = primaryDeep;
-  static const navyMid = primary;
-  static const navyLight = primaryDark;
-  static const gold = accent;
-  static const goldLight = Color(0xFFFDBA74);
-  static const goldDim = Color(0xFFC2410C);
-  static const surfaceSecondaryOld = surfaceSecondary;
-  static const warningBgOld = warningBg;
-  static const errorBgOld = errorBg;
+  // Utility
+  static const whatsappGreen = Color(0xFF25D366);
 }
 
 ThemeData buildAppTheme({bool isAdmin = false}) {
-  const primary = AppColors.primary;
+  const primary = AppColors.navy;
 
   return ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
       seedColor: primary,
       primary: primary,
-      secondary: AppColors.accent,
+      secondary: AppColors.gold,
       surface: AppColors.surface,
       onSurface: AppColors.textPrimary,
     ),

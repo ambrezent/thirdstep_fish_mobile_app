@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: AppColors.primaryLight,
+                      color: AppColors.surfaceSecondary,
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
                     ),
                     child: product.imageUrl.isNotEmpty
@@ -113,7 +113,7 @@ class ProductCard extends StatelessWidget {
                         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(
                             'AED ${product.price.toStringAsFixed(0)}',
-                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.primary),
+                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.gold),
                           ),
                           Text('per ${product.unit}', style: const TextStyle(fontSize: 9, color: AppColors.textTertiary)),
                         ]),

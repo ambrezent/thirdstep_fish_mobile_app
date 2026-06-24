@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Text('Third Step', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700)),
               Text(
                 'ADMIN PORTAL',
-                style: TextStyle(color: AppColors.primarySoft.withValues(alpha: 0.7), fontSize: 11, letterSpacing: 1.5),
+                style: TextStyle(color: AppColors.goldLight.withValues(alpha: 0.7), fontSize: 11, letterSpacing: 1.5),
               ),
               const SizedBox(height: 36),
 
