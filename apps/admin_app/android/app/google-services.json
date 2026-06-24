@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192728450319",
+    "project_id": "freshcatch-uae",
+    "storage_bucket": "freshcatch-uae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192728450319:android:c7b30e1ad27a8df4deea7a",
+        "android_client_info": {
+          "package_name": "com.thirdstepfish.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXs5Pb2l7mpmYyYm2IDA2GqAp-WLMG4AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
