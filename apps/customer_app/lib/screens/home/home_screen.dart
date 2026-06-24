@@ -4,6 +4,7 @@ import 'package:shared/shared.dart';
 import '../../providers/products_provider.dart';
 import '../../widgets/product_card.dart';
 import '../../widgets/category_chip_bar.dart';
+import '../../widgets/offer_banner_slider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -91,6 +92,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: CategoryChipBar(
                 selected: _selectedCategory,
                 onSelected: (c) => setState(() => _selectedCategory = c),
+              ),
+            ),
+          ),
+
+          // Offer banners
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
+              child: OfferBannerSlider(),
+            ),
+          ),
+
+          // Section title
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Fresh Catch', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary, letterSpacing: -0.3)),
+                  Text('${productsAsync.value?.length ?? 0} items', style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                ],
               ),
             ),
           ),
